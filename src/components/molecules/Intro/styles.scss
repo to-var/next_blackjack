@@ -1,0 +1,25 @@
+.Intro {
+  text-align: center;
+  animation: fadeIn 0.7s ease-in-out;
+
+  &__icons {
+    font-size: 8rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    font-family: "Courier New", Courier, monospace;
+
+    @include bp(md) {
+      font-size: 6rem;
+    }
+  }
+
+  &__heading {
+    margin-bottom: 30px;
+  }
+
+  &__description {
+    margin-bottom: 30px;
+  }
+}

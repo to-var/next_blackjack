@@ -1,0 +1,37 @@
+.Button {
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px 0px $color-black;
+  transition: box-shadow 0.3s ease-in-out;
+  background: linear-gradient(0deg, $color-black, $color-grey);
+  min-width: 100px;
+  font-size: 1.2rem;
+  color: $color-white;
+
+  &:hover,
+  &:focus,
+  &:active {
+    box-shadow: 2px 2px 2px 0px $color-black;
+  }
+
+  &--primary {
+    box-shadow: 5px 5px 10px 0px $color-black;
+    background: linear-gradient(
+      0deg,
+      $color-button-large-gradient-1,
+      $color-button-large-gradient-2
+    );
+    font-size: 2rem;
+    padding: 1rem 2rem;
+  }
+
+  &--secondary {
+    font-size: 1.5rem;
+    padding: 1rem 1.5rem;
+    color: $color-white;
+    background: linear-gradient(
+      0deg,
+      $color-button-primary-gradient-1,
+      $color-button-primary-gradient-2
+    );
+  }
+}

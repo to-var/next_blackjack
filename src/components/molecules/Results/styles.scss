@@ -1,0 +1,43 @@
+.Results {
+  align-items: center;
+  animation: fadeIn 0.5s linear, backdropFilter 0.5s linear;
+  animation-fill-mode: forwards;
+  animation-delay: 1s;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+  opacity: 0;
+
+  &::before {
+    background-color: $color-black;
+    content: "";
+    height: 100%;
+    opacity: 0.5;
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+  }
+
+  &__message {
+    width: 80%;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $color-white;
+    flex-wrap: wrap;
+  }
+
+  &__message-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    flex-basis: 100%;
+    text-align: center;
+    text-shadow: 4px 4px 3px $color-black;
+  }
+}

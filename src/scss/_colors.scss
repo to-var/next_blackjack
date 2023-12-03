@@ -1,0 +1,38 @@
+// Primary colors
+$color-green: #067a1b;
+$color-red: #dc143c;
+$color-black: #000000;
+$color-grey: #808080;
+$color-white: #ffffff;
+$color-yellow-1: #ffd500;
+$color-yellow-2: #ff8800;
+$color-blue-1: #0073ad;
+$color-blue-2: #00245a;
+$color-green-1: #0f8526;
+$color-green-2: #003703;
+
+$color-background: $color-black;
+$color-foreground: $color-white;
+
+// Table colors
+$color-table: $color-green;
+
+// Card colors
+$color-spades: $color-black;
+$color-clubs: $color-black;
+$color-hearts: $color-red;
+$color-diamonds: $color-red;
+$color-hidden: $color-grey;
+$color-card-background: $color-white;
+$color-card-foreground: $color-black;
+
+// Buttons
+$color-button-large-gradient-1: $color-yellow-1;
+$color-button-large-gradient-2: $color-yellow-2;
+$color-button-primary-gradient-1: $color-blue-1;
+$color-button-primary-gradient-2: $color-blue-2;
+$color-button-secondary-gradient-1: $color-green-1;
+$color-button-secondary-gradient-2: $color-green-2;
+
+// Player info
+$color-player-label: $color-yellow-1;

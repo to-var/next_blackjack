@@ -1,0 +1,8 @@
+.Heading {
+  &--h1 {
+    font-size: 60px;
+    text-transform: uppercase;
+    color: $color-foreground;
+    line-height: 1.5em;
+  }
+}

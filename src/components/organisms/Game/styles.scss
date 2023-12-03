@@ -1,0 +1,36 @@
+.Game {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  min-height: 100%;
+  position: relative;
+
+  &:before {
+    background: radial-gradient($color-green 0%, $color-background 125%),
+      url("/noise.svg");
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    content: "";
+  }
+
+  &__table {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    flex-basis: 100%;
+    max-width: 800px;
+
+    .Player:first-child {
+      margin-bottom: 20px;
+
+      @include bp(md) {
+        margin-bottom: 100px;
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+.Text {
+  color: $color-foreground;
+
+  &--size-1 {
+    font-size: 1.2rem;
+  }
+
+  &--size-2 {
+    font-size: 1.4rem;
+  }
+
+  &--size-3 {
+    font-size: 1.6rem;
+  }
+
+  &--size-4 {
+    font-size: 1.8rem;
+  }
+
+  &--size-5 {
+    font-size: 2rem;
+  }
+
+  &__primary {
+    color: $color-white;
+  }
+
+  &__secondary {
+    color: $color-yellow-1;
+  }
+}

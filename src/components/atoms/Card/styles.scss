@@ -1,0 +1,96 @@
+.Card {
+  background-color: $color-card-background;
+  border-radius: 5px;
+  border: 1px solid var(--color-primary);
+  box-shadow: -4px 4px 15px 0px $color-background;
+  color: $color-card-foreground;
+  height: $card-height-sm;
+  padding: 5px;
+  position: relative;
+  width: $card-width-sm;
+  transition: transform 0.5s ease-in-out, top 0.5s ease-in-out,
+    left 0.5s ease-in-out;
+  animation: fadeIn 0.3s ease-in-out;
+  animation-fill-mode: forwards;
+
+  @include bp(md) {
+    height: $card-height-md;
+    width: $card-width-md;
+  }
+
+  &::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 4rem;
+
+    @include bp(md) {
+      font-size: 8rem;
+    }
+  }
+
+  &--hidden {
+    color: $color-black;
+
+    &::before {
+      opacity: 0.7;
+      content: "?";
+    }
+  }
+
+  &--hearts {
+    color: $color-hearts;
+
+    &::before {
+      content: "♥";
+    }
+  }
+
+  &--diamonds {
+    color: $color-diamonds;
+
+    &::before {
+      content: "♦";
+    }
+  }
+
+  &--spades {
+    color: $color-spades;
+
+    &::before {
+      content: "♠";
+    }
+  }
+
+  &--clubs {
+    color: $color-clubs;
+
+    &::before {
+      content: "♣";
+    }
+  }
+
+  &__value {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 2rem;
+
+    &::before {
+      content: attr(data-content);
+      position: absolute;
+      top: 10px;
+      left: 10px;
+    }
+
+    &::after {
+      content: attr(data-content);
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+    }
+  }
+}

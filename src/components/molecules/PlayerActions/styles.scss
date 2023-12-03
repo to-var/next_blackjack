@@ -1,0 +1,9 @@
+.PlayerActions {
+  margin: 20px 0;
+  display: flex;
+  gap: 20px;
+
+  @include bp(md) {
+    margin: 50px 0;
+  }
+}

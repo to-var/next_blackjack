@@ -1,0 +1,38 @@
+.PlayerHand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-basis: 80%;
+  flex-grow: 0;
+  order: 0;
+  height: 190px;
+  position: relative;
+  transform: translate(
+    calc(-1 * $card-width-sm / 2),
+    calc(-1 * $card-height-sm / 2)
+  );
+
+  @include bp(md) {
+    height: 210px;
+    transform: translate(
+      calc(-1 * $card-width-md / 2),
+      calc(-1 * $card-height-md / 2)
+    );
+  }
+
+  .Player--dealer & {
+    order: 1;
+  }
+
+  .Card {
+    position: absolute;
+    top: -150%;
+    left: 50%;
+  }
+
+  &--dealer {
+    .Card {
+      top: -100%;
+    }
+  }
+}

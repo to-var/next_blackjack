@@ -1,0 +1,20 @@
+.Icon {
+  font-size: inherit;
+  display: inline-flex;
+
+  &--hearts {
+    color: $color-hearts;
+  }
+
+  &--spades {
+    color: $color-spades;
+  }
+
+  &--diamonds {
+    color: $color-diamonds;
+  }
+
+  &--clubs {
+    color: $color-clubs;
+  }
+}
