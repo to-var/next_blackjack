@@ -1,5 +1,5 @@
 import React from "react";
-import Molecules from "@/components/molecules";
+import Molecules from "@/ui/molecules";
 import "./styles.scss";
 
 type TPlayerProps = {

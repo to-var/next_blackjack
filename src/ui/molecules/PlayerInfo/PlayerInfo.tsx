@@ -1,6 +1,6 @@
 import React from "react";
 import "./styles.scss";
-import Atoms from "@/components/atoms";
+import Atoms from "@/ui/atoms";
 
 type TPlayerInfoProps = {
   label: string;

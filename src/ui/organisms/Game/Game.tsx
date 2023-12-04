@@ -1,11 +1,13 @@
 import React from "react";
-import * as gameClient from "@/lib/api/gameClient";
+import Molecules from "@/ui/molecules";
+import Organisms from "@/ui/organisms/index";
+import { GameClient } from "@/game/lib/GameClient";
 import { GAME_TEXT, REQUEST_ERROR } from "@/utils/constants";
-import Molecules from "@/components/molecules";
-import Organisms from "../index";
 import "./styles.scss";
 
 class Game extends React.Component<object, TGameState> {
+  gameClient: GameClient;
+
   constructor(props: object) {
     super(props);
     this.state = {
@@ -13,6 +15,7 @@ class Game extends React.Component<object, TGameState> {
       error: null,
       isLoading: false,
     };
+    this.gameClient = new GameClient();
   }
 
   private handleGameStart = async () => {
@@ -24,9 +27,9 @@ class Game extends React.Component<object, TGameState> {
     });
 
     // Fetch new game data
-    const data = await gameClient.gameStart();
+    const data = await this.gameClient.gameStart();
 
-    if (data.error) {
+    if ("error" in data) {
       this.setState({ error: new Error(REQUEST_ERROR), isLoading: false });
       return;
     }
@@ -38,9 +41,9 @@ class Game extends React.Component<object, TGameState> {
   private handleHit = async () => {
     if (!this?.state?.gameData?.id) return;
 
-    const data = await gameClient.gameHit(this.state.gameData.id);
+    const data = await this.gameClient.gameHit(this.state.gameData.id);
 
-    if (data.error) {
+    if ("error" in data) {
       this.setState({ error: new Error(REQUEST_ERROR) });
       return;
     }
@@ -51,9 +54,9 @@ class Game extends React.Component<object, TGameState> {
   private handleStand = async () => {
     if (!this?.state?.gameData?.id) return;
 
-    const data = await gameClient.gameStand(this.state.gameData.id);
+    const data = await this.gameClient.gameStand(this.state.gameData.id);
 
-    if (data.error) {
+    if ("error" in data) {
       this.setState({ error: new Error(REQUEST_ERROR) });
       return;
     }
@@ -85,15 +88,15 @@ class Game extends React.Component<object, TGameState> {
               <>
                 <Organisms.Player
                   label={GAME_TEXT.dealer}
-                  score={gameData.dealerScore || 0}
-                  hand={gameData.dealerHand || []}
+                  score={gameData.dealerscore || 0}
+                  hand={gameData.dealerhand || []}
                   isDealer
                 />
 
                 <Organisms.Player
                   label={GAME_TEXT.player}
-                  score={gameData.playerScore || 0}
-                  hand={gameData.playerHand || []}
+                  score={gameData.playerscore || 0}
+                  hand={gameData.playerhand || []}
                 >
                   <Molecules.PlayerActions
                     hitCallback={this.handleHit}

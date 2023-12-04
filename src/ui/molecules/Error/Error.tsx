@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import Atoms from "@/components/atoms";
+import Atoms from "@/ui/atoms";
 import "./styles.scss";
 
 type TErrorProps = {

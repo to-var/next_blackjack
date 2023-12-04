@@ -1,7 +1,7 @@
 import React from "react";
 import Atoms from "../../atoms";
 import "./styles.scss";
-import { CARD_ANIMATION_DELAY } from "../../../utils/constants";
+import { CARD_ANIMATION_DELAY } from "@/utils/constants";
 
 type TPlayerHandProps = {
   hand: TCard[];

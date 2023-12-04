@@ -1,7 +1,7 @@
 import React from "react";
 import { GAME_TEXT, CARD_ICONS } from "@/utils/constants";
 import "./styles.scss";
-import Atoms from "@/components/atoms";
+import Atoms from "@/ui/atoms";
 
 type TIntroProps = {
   newGameCallback: () => void;

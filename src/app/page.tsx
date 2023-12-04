@@ -1,6 +1,6 @@
 "use client";
 
-import Organisms from "@/components/organisms";
+import Organisms from "@/ui/organisms";
 
 export default function Home() {
   return (
