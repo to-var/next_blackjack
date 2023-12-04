@@ -13,7 +13,8 @@ interface TGameData {
 type TGameState = {
   gameData: TGameData | null;
   error: Error | null;
-  isLoading: boolean;
+  isGameLoading: boolean;
+  isLoadingDeck: boolean;
 };
 
 interface IDealer extends IPlayer {

@@ -13,7 +13,7 @@
     box-shadow: 2px 2px 2px 0px $color-black;
   }
 
-  &--primary {
+  &__primary {
     box-shadow: 5px 5px 10px 0px $color-black;
     background: linear-gradient(
       0deg,
@@ -24,7 +24,7 @@
     padding: 1rem 2rem;
   }
 
-  &--secondary {
+  &__secondary {
     font-size: 1.5rem;
     padding: 1rem 1.5rem;
     color: $color-white;
@@ -33,5 +33,13 @@
       $color-button-primary-gradient-1,
       $color-button-primary-gradient-2
     );
+  }
+
+  &[disabled],
+  &--disabled {
+    background: linear-gradient(0deg, $color-black, $color-grey);
+    box-shadow: 2px 2px 2px 0px $color-black;
+    cursor: not-allowed;
+    color: $color-grey;
   }
 }

@@ -52,7 +52,7 @@ class PlayerHand extends React.Component<TPlayerHandProps, TPlayerHandState> {
 
       // Calculate Y position values
       const valueY = isMiddleCard ? (isDealer ? 56 : 44) : 50;
-      const valueX = 50 + (cardIndex - (totalCards - 1) / 2) * 30;
+      const valueX = 50 + (cardIndex - (totalCards - 1) / 2) * 15;
 
       cardStyles.push({
         transform: `rotateZ(${rotationValue}deg)`,

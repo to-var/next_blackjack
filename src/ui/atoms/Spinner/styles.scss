@@ -1,0 +1,35 @@
+.Spinner {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  z-index: 100;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: $color-background;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    opacity: 0.2;
+  }
+
+  &__circle {
+    width: 48px;
+    height: 48px;
+    border: 5px solid $color-yellow-1;
+    border-bottom-color: $color-yellow-2;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+    z-index: 2;
+  }
+}

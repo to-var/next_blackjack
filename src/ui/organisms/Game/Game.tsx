@@ -1,6 +1,7 @@
 import React from "react";
 import Molecules from "@/ui/molecules";
-import Organisms from "@/ui/organisms/index";
+import Organisms from "@/ui/organisms";
+import Atoms from "@/ui/atoms";
 import { GameClient } from "@/game/lib/GameClient";
 import { GAME_TEXT, REQUEST_ERROR } from "@/utils/constants";
 import "./styles.scss";
@@ -13,34 +14,33 @@ class Game extends React.Component<object, TGameState> {
     this.state = {
       gameData: null,
       error: null,
-      isLoading: false,
+      isGameLoading: false,
+      isLoadingDeck: false,
     };
     this.gameClient = new GameClient();
   }
 
   private handleGameStart = async () => {
-    // Reset state
     this.setState({
       gameData: null,
       error: null,
-      isLoading: true,
+      isGameLoading: true,
     });
 
-    // Fetch new game data
     const data = await this.gameClient.gameStart();
 
     if ("error" in data) {
-      this.setState({ error: new Error(REQUEST_ERROR), isLoading: false });
+      this.setState({ error: new Error(REQUEST_ERROR), isGameLoading: false });
       return;
     }
 
-    // Update state with new game data
-    this.setState({ gameData: data, isLoading: false });
+    this.setState({ gameData: data, isGameLoading: false });
   };
 
   private handleHit = async () => {
     if (!this?.state?.gameData?.id) return;
 
+    this.setState({ isLoadingDeck: true });
     const data = await this.gameClient.gameHit(this.state.gameData.id);
 
     if ("error" in data) {
@@ -48,12 +48,13 @@ class Game extends React.Component<object, TGameState> {
       return;
     }
 
-    this.setState({ gameData: data });
+    this.setState({ gameData: data, isLoadingDeck: false });
   };
 
   private handleStand = async () => {
     if (!this?.state?.gameData?.id) return;
 
+    this.setState({ isLoadingDeck: true });
     const data = await this.gameClient.gameStand(this.state.gameData.id);
 
     if ("error" in data) {
@@ -61,11 +62,11 @@ class Game extends React.Component<object, TGameState> {
       return;
     }
 
-    this.setState({ gameData: data });
+    this.setState({ gameData: data, isLoadingDeck: false });
   };
 
   render() {
-    const { gameData, error, isLoading } = this.state;
+    const { gameData, error, isGameLoading } = this.state;
 
     return (
       <div className="Game">
@@ -76,15 +77,17 @@ class Game extends React.Component<object, TGameState> {
           />
         ) : null}
 
+        {isGameLoading ? <Atoms.Spinner /> : null}
+
         <div className="Game__table">
           <>
-            {!error && !gameData?.id && !isLoading ? (
+            {!error && !gameData?.id && !isGameLoading ? (
               <Molecules.Intro newGameCallback={this.handleGameStart} />
             ) : null}
 
-            {error && !isLoading ? <Molecules.Error error={error} /> : null}
+            {error && !isGameLoading ? <Molecules.Error error={error} /> : null}
 
-            {!error && !isLoading && gameData ? (
+            {!error && gameData && gameData.id ? (
               <>
                 <Organisms.Player
                   label={GAME_TEXT.dealer}
@@ -101,6 +104,7 @@ class Game extends React.Component<object, TGameState> {
                   <Molecules.PlayerActions
                     hitCallback={this.handleHit}
                     standCallback={this.handleStand}
+                    isLoadingDeck={this.state.isLoadingDeck}
                   />
                 </Organisms.Player>
               </>
