@@ -1,4 +1,4 @@
-export const SIMULTANEUS_GAMES_LIMIT = 100;
+export const SIMULTANEUS_GAMES_LIMIT = 20;
 export const INITIAL_CARD_COUNT = 2;
 export const WINNING_SCORE = 21;
 export const DEALER_STOP_VALUE = 17;
