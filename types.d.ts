@@ -1,13 +1,13 @@
 type TCard = [string | null, string | null];
 
 interface TGameData {
-  id?: string;
-  winner?: string;
-  playerHand?: TCard[];
-  playerScore?: number;
-  dealerHand?: TCard[];
-  dealerScore?: number;
-  error?: Error;
+  id: string;
+  deck: TCard[];
+  winner: string;
+  playerhand: TCard[];
+  playerscore: number;
+  dealerhand: TCard[];
+  dealerscore: number;
 }
 
 type TGameState = {
@@ -15,16 +15,6 @@ type TGameState = {
   error: Error | null;
   isLoading: boolean;
 };
-
-interface IDeck {
-  drawCard(): TCard;
-}
-
-interface IPlayer {
-  hand: TCard[];
-  addCard(card: TCard): void;
-  calculateScore(hideFirstCard?: boolean): number;
-}
 
 interface IDealer extends IPlayer {
   playTurn(drawCardCallback: () => TCard): number;

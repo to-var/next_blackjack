@@ -1,6 +1,7 @@
 export const SIMULTANEUS_GAMES_LIMIT = 100;
 export const INITIAL_CARD_COUNT = 2;
 export const WINNING_SCORE = 21;
+export const DEALER_STOP_VALUE = 17;
 export const KQJ_VALUE = 10;
 export const ACE_MIN_VALUE = 1;
 export const ACE_MAX_VALUE = 11;
@@ -49,3 +50,5 @@ export const CARD_ICONS = {
 };
 
 export const CARD_ANIMATION_DELAY = 300;
+
+export const TABLE_NAME = "games";

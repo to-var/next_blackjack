@@ -1,12 +1,8 @@
-import gameService from "@/lib/api/gameService";
+import { GameController } from "@/game/controllers/GameController";
 
 export async function GET() {
-  const newGame = gameService.createGame();
-  const gameData = gameService.getGameData(newGame.id);
+  const gameService = new GameController();
+  const clientData = await gameService.createGame();
 
-  if (gameData instanceof Error) {
-    return new Response(gameData.message, { status: 404 });
-  }
-
-  return Response.json(gameData);
+  return Response.json(clientData);
 }

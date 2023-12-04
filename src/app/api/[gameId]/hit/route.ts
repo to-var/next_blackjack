@@ -1,11 +1,11 @@
-import gameService from "@/lib/api/gameService";
+import { GameController } from "@/game/controllers/GameController";
 
 export async function POST(
   request: Request,
   { params }: { params: { gameId: string } }
 ) {
   const { gameId } = params;
-  const gameData = gameService.executeHit(gameId);
+  const gameData = await GameController.executeHit(gameId);
 
   if (gameData instanceof Error) {
     return new Response(gameData.message, { status: 404 });
