@@ -102,7 +102,7 @@ class GameModel {
 
   async clearGameTable() {
     const db = createKysely<IDatabase>();
-    await sql`truncate table ${TABLE_NAME}`.execute(db);
+    await db.deleteFrom(TABLE_NAME).execute();
   }
 }
 

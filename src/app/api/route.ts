@@ -1,8 +1,9 @@
 import { GameController } from "@/game/controllers/GameController";
 
+export const dynamic = "force-dynamic";
 export async function GET() {
-  const gameService = new GameController();
-  const clientData = await gameService.createGame();
+  const gameController = new GameController();
+  const clientData = await gameController.createGame();
 
-  return Response.json(clientData);
+  return Response.json(clientData, { status: 200 });
 }

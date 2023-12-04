@@ -2,21 +2,15 @@ import { SIMULTANEUS_GAMES_LIMIT } from "@/utils/constants";
 import GameModel from "@/game/models/GameModel";
 import { GameService } from "@/game/services/GameService";
 
+const gameModel = new GameModel();
 export class GameController {
-  private gameLimit: number;
-
-  constructor(gameLimit = SIMULTANEUS_GAMES_LIMIT) {
-    this.gameLimit = gameLimit;
-  }
-
   /**
    * Creates a new game and adds it to the pool
    */
   async createGame() {
-    const gameModel = new GameModel();
     const poolSize = await gameModel.getPoolSize();
 
-    if (poolSize + 1 > this.gameLimit) {
+    if (poolSize + 1 > SIMULTANEUS_GAMES_LIMIT) {
       await gameModel.clearGameTable();
     }
 
@@ -63,7 +57,6 @@ export class GameController {
       winner: newData.winner,
     };
 
-    const gameModel = new GameModel();
     await gameModel.updateGame(game.id, newGameData);
 
     return GameService.getClientData({ ...game, ...newGameData });
@@ -86,7 +79,6 @@ export class GameController {
       winner: newData.winner,
     };
 
-    const gameModel = new GameModel();
     await gameModel.updateGame(game.id, newGameData);
 
     return { ...game, ...newGameData };
