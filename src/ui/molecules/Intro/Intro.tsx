@@ -3,7 +3,7 @@ import { GAME_TEXT, CARD_ICONS } from "@/utils/constants";
 import "./styles.scss";
 import Atoms from "@/ui/atoms";
 
-type TIntroProps = {
+export type TIntroProps = {
   newGameCallback: () => void;
 };
 

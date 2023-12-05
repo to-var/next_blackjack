@@ -1,7 +1,7 @@
 import React from "react";
 import "./styles.scss";
 
-type TTextProps = {
+export type TTextProps = {
   children: React.ReactNode;
   style?: React.CSSProperties;
   shadow?: boolean;
@@ -16,7 +16,7 @@ class Text extends React.Component<TTextProps> {
 
   render() {
     const className = [
-      `Text Text__${this.props.type}`,
+      `Text Text--${this.props.type}`,
       `Text--size-${this.props.size}`,
       this.props.shadow ? "Text--shadow" : "",
     ]

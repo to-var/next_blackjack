@@ -2,25 +2,25 @@ import React from "react";
 import "./styles.scss";
 import Atoms from "@/ui/atoms";
 
-type TPlayerInfoProps = {
+export type TPointsPanelProps = {
   label: string;
   score: number;
 };
 
-class PlayerInfo extends React.Component<TPlayerInfoProps> {
-  constructor(props: TPlayerInfoProps) {
+class PointsPanel extends React.Component<TPointsPanelProps> {
+  constructor(props: TPointsPanelProps) {
     super(props);
   }
 
   render() {
     return (
-      <div className="PlayerInfo">
-        <div className="PlayerInfo--label">
+      <div className="PointsPanel">
+        <div className="PointsPanel__label">
           <Atoms.Text size={2} shadow={true} type="primary">
             {this.props.label}
           </Atoms.Text>
         </div>
-        <div className="PlayerInfo--score">
+        <div className="PointsPanel__score">
           <Atoms.Text size={4} shadow={true} type="secondary">
             {this.props.score}
           </Atoms.Text>
@@ -30,4 +30,4 @@ class PlayerInfo extends React.Component<TPlayerInfoProps> {
   }
 }
 
-export default PlayerInfo;
+export default PointsPanel;

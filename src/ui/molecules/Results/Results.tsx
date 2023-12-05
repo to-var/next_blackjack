@@ -3,7 +3,7 @@ import { GAME_TEXT } from "@/utils/constants";
 import "./styles.scss";
 import Atoms from "@/ui/atoms";
 
-type TResultsProps = {
+export type TResultsProps = {
   winner: string;
   newGameCallback: () => void;
 };

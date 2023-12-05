@@ -4,7 +4,7 @@ import React from "react";
 import Atoms from "@/ui/atoms";
 import "./styles.scss";
 
-type TErrorProps = {
+export type TErrorProps = {
   error: any;
 };
 

@@ -3,31 +3,31 @@ import { GAME_TEXT } from "@/utils/constants";
 import "./styles.scss";
 import Atoms from "@/ui/atoms";
 
-type TPlayerActionsProps = {
+export type TActionsPanelProps = {
   hitCallback: () => void;
   standCallback: () => void;
-  isLoadingDeck: boolean;
+  disabledButtons: boolean;
 };
 
-class PlayerActions extends React.Component<TPlayerActionsProps> {
-  constructor(props: TPlayerActionsProps) {
+class ActionsPanel extends React.Component<TActionsPanelProps> {
+  constructor(props: TActionsPanelProps) {
     super(props);
   }
 
   render() {
     return (
-      <div className="PlayerActions">
+      <div className="ActionsPanel">
         <Atoms.Button
           onClick={this.props.hitCallback}
           type="secondary"
-          disabled={this.props.isLoadingDeck}
+          disabled={this.props.disabledButtons}
         >
           {GAME_TEXT.hit}
         </Atoms.Button>
         <Atoms.Button
           onClick={this.props.standCallback}
           type="secondary"
-          disabled={this.props.isLoadingDeck}
+          disabled={this.props.disabledButtons}
         >
           {GAME_TEXT.stand}
         </Atoms.Button>
@@ -36,4 +36,4 @@ class PlayerActions extends React.Component<TPlayerActionsProps> {
   }
 }
 
-export default PlayerActions;
+export default ActionsPanel;

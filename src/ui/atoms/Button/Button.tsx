@@ -1,7 +1,7 @@
 import React from "react";
 import "./styles.scss";
 
-type TButtonProps = {
+export type TButtonProps = {
   onClick: () => void;
   type: "large" | "primary" | "secondary";
   disabled?: boolean;
@@ -9,9 +9,7 @@ type TButtonProps = {
 };
 
 class Button extends React.Component<TButtonProps> {
-  constructor(
-    props: TButtonProps = { onClick: () => {}, type: "primary", children: null }
-  ) {
+  constructor(props: TButtonProps) {
     super(props);
   }
 
@@ -19,7 +17,7 @@ class Button extends React.Component<TButtonProps> {
     const disabled = this.props.disabled;
     const className = [
       "Button",
-      `Button__${this.props.type}`,
+      `Button--${this.props.type}`,
       `${disabled ? "Button--disabled" : ""}`,
     ];
 
