@@ -21,3 +21,9 @@ interface IDealer extends IPlayer {
   playTurn(drawCardCallback: () => TCard): number;
   calculateScore(hideFirstCard?: boolean): number;
 }
+
+type TGameClient = {
+  gameStart: () => Promise<TGameData | { error: Error }>;
+  gameHit: (gameId: string) => Promise<TGameData | { error: Error }>;
+  gameStand: (gameId: string) => Promise<TGameData | { error: Error }>;
+};

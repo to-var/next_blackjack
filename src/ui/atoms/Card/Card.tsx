@@ -2,7 +2,7 @@ import React from "react";
 import { GAME_TEXT } from "@/utils/constants";
 import "./styles.scss";
 
-type TCardProps = {
+export type TCardProps = {
   data: TCard;
   style?: React.CSSProperties;
 };
@@ -18,9 +18,9 @@ class Card extends React.Component<TCardProps> {
     const value = this.props.data[1] ? this.props.data[1] : "?";
 
     const ariaLabel =
-      this.props.data === null
+      this.props.data[0] === null && this.props.data[1] === null
         ? GAME_TEXT.hiddenCardAriaLabel
-        : `${type} - ${value} - ${GAME_TEXT.cardAriaLabel}}`;
+        : `${value} of ${type} - ${GAME_TEXT.cardAriaLabel}`;
 
     return (
       <div

@@ -3,17 +3,17 @@ import Atoms from "../../atoms";
 import "./styles.scss";
 import { CARD_ANIMATION_DELAY } from "@/utils/constants";
 
-type TPlayerHandProps = {
+export type THandProps = {
   hand: TCard[];
   isDealer?: boolean;
 };
 
-type TPlayerHandState = {
+type THandState = {
   cardStyles: React.CSSProperties[];
 };
 
-class PlayerHand extends React.Component<TPlayerHandProps, TPlayerHandState> {
-  constructor(props: TPlayerHandProps) {
+class Hand extends React.Component<THandProps, THandState> {
+  constructor(props: THandProps) {
     super(props);
     this.state = { cardStyles: [] };
   }
@@ -25,7 +25,7 @@ class PlayerHand extends React.Component<TPlayerHandProps, TPlayerHandState> {
     }, CARD_ANIMATION_DELAY);
   }
 
-  componentDidUpdate(prevProps: TPlayerHandProps) {
+  componentDidUpdate(prevProps: THandProps) {
     if (prevProps.hand.length !== this.props.hand.length) {
       const { cardStyles } = this.getStyles();
       setTimeout(() => {
@@ -86,4 +86,4 @@ class PlayerHand extends React.Component<TPlayerHandProps, TPlayerHandState> {
   }
 }
 
-export default PlayerHand;
+export default Hand;

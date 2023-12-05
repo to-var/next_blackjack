@@ -13,7 +13,7 @@
     box-shadow: 2px 2px 2px 0px $color-black;
   }
 
-  &__primary {
+  &--primary {
     box-shadow: 5px 5px 10px 0px $color-black;
     background: linear-gradient(
       0deg,
@@ -24,7 +24,7 @@
     padding: 1rem 2rem;
   }
 
-  &__secondary {
+  &--secondary {
     font-size: 1.5rem;
     padding: 1rem 1.5rem;
     color: $color-white;

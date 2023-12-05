@@ -1,7 +1,7 @@
 import React from "react";
 import "./styles.scss";
 
-type THeadingProps = {
+export type THeadingProps = {
   level: number;
   style?: React.CSSProperties;
   children: React.ReactNode;

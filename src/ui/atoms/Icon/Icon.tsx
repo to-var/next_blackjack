@@ -2,7 +2,7 @@ import React from "react";
 import "./styles.scss";
 import { CARD_ICONS } from "@/utils/constants";
 
-type TIconProps = {
+export type TIconProps = {
   style?: React.CSSProperties;
   type: string;
 };

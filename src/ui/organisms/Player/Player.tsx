@@ -2,7 +2,7 @@ import React from "react";
 import Molecules from "@/ui/molecules";
 import "./styles.scss";
 
-type TPlayerProps = {
+export type TPlayerProps = {
   label: string;
   score: number;
   hand: TCard[];
@@ -22,12 +22,12 @@ class Player extends React.Component<TPlayerProps> {
     return (
       <>
         <div className={this.wrapperClass}>
-          <Molecules.PlayerInfo
+          <Molecules.PointsPanel
             label={this.props.label}
             score={this.props.score}
           />
 
-          <Molecules.PlayerHand
+          <Molecules.Hand
             hand={this.props.hand}
             isDealer={this.props.isDealer}
           />
