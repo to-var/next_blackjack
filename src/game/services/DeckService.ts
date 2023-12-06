@@ -42,13 +42,13 @@ export class DeckService {
   /**
    * Draws a card from the deck
    */
-  drawCards(cardCount: number = 2): TCard[] {
+  drawCards(cardCount: number = 2): { drawnCards: TCard[]; newDeck: TCard[] } {
     let drawnCards = [];
 
     for (let i = 0; i < cardCount; i++) {
       drawnCards.push(this.deck.pop() as TCard);
     }
 
-    return drawnCards;
+    return { drawnCards, newDeck: this.deck };
   }
 }

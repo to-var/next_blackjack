@@ -1,4 +1,4 @@
-import { GameController } from "@/game/controllers/GameController";
+import * as gameController from "@/game/controllers/gameController";
 
 export const dynamic = "force-dynamic";
 export async function POST(
@@ -6,7 +6,7 @@ export async function POST(
   { params }: { params: { gameId: string } }
 ) {
   const { gameId } = params;
-  const gameData = await GameController.executeStand(gameId);
+  const gameData = await gameController.executeStand(gameId);
 
   if (gameData instanceof Error) {
     return new Response(gameData.message, { status: 404 });

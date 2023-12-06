@@ -14,14 +14,16 @@ export class GameService {
   /**
    * Create new game data
    */
-  private createApiData() {
+  public createApiData() {
     const deckService = new DeckService();
-    const playerHand = new HandService(deckService.drawCards(2));
-    const dealerHand = new HandService(deckService.drawCards(2));
+    const { drawnCards, newDeck } = deckService.drawCards(4);
+
+    const playerHand = new HandService(drawnCards.slice(2));
+    const dealerHand = new HandService(drawnCards.slice(2, 4));
 
     return {
       id: Date.now() + "",
-      deck: deckService.deck,
+      deck: newDeck,
       playerhand: playerHand.cards,
       dealerhand: dealerHand.cards,
       playerscore: playerHand.getHandScore(),
@@ -51,13 +53,12 @@ export class GameService {
     const { deck, playerhand } = gameData;
 
     const deckService = new DeckService(deck);
-    const playerHandService = new HandService([
-      ...playerhand,
-      ...deckService.drawCards(1),
-    ]);
+    const { drawnCards, newDeck } = deckService.drawCards(1);
+
+    const playerHandService = new HandService([...playerhand, ...drawnCards]);
 
     return {
-      deck: deckService.deck,
+      deck: newDeck,
       playerhand: playerHandService.cards,
       playerscore: playerHandService.getHandScore(),
       winner: playerHandService.isBust ? GAME_TEXT.dealerWins : gameData.winner,
@@ -78,7 +79,7 @@ export class GameService {
     const dealerHandService = new HandService(dealerhand);
 
     while (dealerHandService.score < DEALER_STOP_VALUE) {
-      dealerHandService.addCard(deckService.drawCards(1)[0]);
+      dealerHandService.addCard(deckService.drawCards(1).drawnCards[0]);
     }
 
     const winner = GameService.resolve(dealerHandService.score, playerscore);

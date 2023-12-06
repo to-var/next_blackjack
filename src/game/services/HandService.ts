@@ -31,10 +31,16 @@ export class HandService {
         : (score += CardService.getCardValue(value || "0"));
     }
 
+    // Calculate all aces when their combined min value exceed winning score
+    if (score + ACE_MIN_VALUE * aceCount > WINNING_SCORE) {
+      score += ACE_MIN_VALUE * aceCount;
+      return score;
+    }
+
+    // Calculate ace values one by one
     for (let aceIndex = 0; aceIndex < aceCount; aceIndex++) {
-      score + ACE_MAX_VALUE > WINNING_SCORE
-        ? (score += ACE_MIN_VALUE)
-        : (score += ACE_MAX_VALUE);
+      score +=
+        score + ACE_MAX_VALUE > WINNING_SCORE ? ACE_MIN_VALUE : ACE_MAX_VALUE;
     }
 
     return score;

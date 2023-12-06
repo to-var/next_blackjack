@@ -2,7 +2,7 @@
 
 import Organisms from "@/ui/organisms";
 import gameClient from "@/game/lib/gameClient";
-import { SetStateAction, useState } from "react";
+import { useState } from "react";
 import { REQUEST_ERROR } from "@/utils/constants";
 
 export default function Home() {
