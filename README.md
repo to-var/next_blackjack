@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 21 Blackjack game
 
-## Getting Started
+| Live version at https://blackjack.tovar.dev
 
-First, run the development server:
+## Stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Next.js | React.js | Typescript | Jest | SCSS | Postgresql
+
+## Requirements
+
+- A functional Postgresql database with a table called `Games`
+
+## Setup
+
+Create a .env file with the following information:
+
+```
+POSTGRES_URL="postgres://<db_user>:<password>@<db_host>:5432/Games"
+POSTGRES_PRISMA_URL="postgres://<db_user>:<password>@<db_host>:5432/Games?pgbouncer=true&connect_timeout=15"
+POSTGRES_URL_NON_POOLING="postgres://<db_user>:<password>@<db_host>:5432/Games"
+POSTGRES_USER="<db_user>"
+POSTGRES_HOST="<db_host>"
+POSTGRES_PASSWORD="<password>"
+POSTGRES_DATABASE="Games"
+# More info at: https://vercel.com/docs/storage/vercel-postgres/quickstart#
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Install dependencies:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Running the game:
 
-## Learn More
+```
+# Create production build
+npm build
+```
 
-To learn more about Next.js, take a look at the following resources:
+```
+# Serve production build output
+npm start
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+# Dev server + Jest --watch --coverage
+npm run dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```
+# Next.js Dev server alone
+npm run dev:next
+```
 
-## Deploy on Vercel
+```
+# Jest --watch --coverage
+npm run dev:coverage
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Folder structure breakdown
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- `./__tests__` Tests folder
+- `./src`
+  - `./src/app` Next.js code, it includes `page`, `layout`, and `api` endpoints
+  - `./src/game` Game logic server side controllers, services, models and library for client side data pulling.
+  - `./src/scss` Global styles, variables, mixins, etc
+  - `./src/ui` React client side class components
+  - `./src/utils` Constants, ~global utilities~
